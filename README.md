@@ -17,8 +17,10 @@ TSCMToDoList é uma aplicação responsiva de ToDo List onde é possível adicio
 
 Primeiro você precisa instalar as dependências com o comando:
 - `yarn`
+
 Depois você precisa rodar a aplicação com o comando:
 - `yarn dev`
+
 Para finalizar, você irá rodar o servidor indo até o diretório "Api" dentro de "Pages" (tscom\tscm\src\Pages\Api), com o comando:
 - `node api.js`
 
