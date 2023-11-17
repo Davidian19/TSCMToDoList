@@ -50,6 +50,6 @@ Responsável palo formulário para implementação de uma nova tarefa, que receb
 
 Api.js:
 API simples em Node.js utilizando o framework Express para o armazenamento de tarefas 
-`/gettask` (GET): Retorna a lista de tarefas atualizada
-`/addtask` (POST): Adiciona uma nova tarefa à lista
-`/deletetask/:id` (DELETE): Exclui a tarefa com o ID especificado
+- `/gettask` (GET): Retorna a lista de tarefas atualizada
+- `/addtask` (POST): Adiciona uma nova tarefa à lista
+- `/deletetask/:id` (DELETE): Exclui a tarefa com o ID especificado
