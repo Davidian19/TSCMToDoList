@@ -8,23 +8,29 @@ import Counter from '../Counter';
 import AddTask from '../AddTask';
 import * as S from './styles'
 import { SectionTitle } from '../SectionTitle';
+import axios from 'axios';
 
 function ToDoList() {  
   const [toDos, setToDos] = useState<ToDoProps[]>([]);
   const [newToDo, setNewToDo] = useState<string>('');
   const [newDescription, setNewDescription] = useState<string>('');
   const [counter, setCounter] = useState<number>(0);
-
+  
   useEffect(() => {
-    const savedToDo = localStorage.getItem('someKey');
-  
-    if (savedToDo) {
-      const parsedToDo = JSON.parse(savedToDo);
-      setToDos(parsedToDo);
+    if (newToDo) {
+      fetchToDo();
     }
-  }, []); 
-  
-  const addToDo = () => {
+  }, []);
+  const fetchToDo = async () => {
+    try {
+      const response = await axios.get('http://localhost:3000/gettask');
+      const {todoItem} = response.data.toDoList;
+      setToDos(todoItem);
+    } catch (error) {
+      console.error('Erro ao obter a lista de tarefas:', error);
+    }
+  };
+  const addToDo = async () => {
     if (newToDo.trim() === '') return;
     const currentDate = new Date();
     const formattedDate = format(currentDate, "d MMMM yyyy 'at' hh:mm a");
@@ -34,25 +40,34 @@ function ToDoList() {
       title: newToDo,
       description: newDescription,
     };
-    const newToDos = [...toDos, toDo];
-    localStorage.setItem('someKey', JSON.stringify(newToDos));  
-    setToDos(newToDos);
-    setNewToDo('');
-    setNewDescription('');
+    console.log('Enviando requisição para a API...');
+    try {
+      const { data: response } = await axios.post('http://localhost:3000/addtask', { ToDo: toDo });
+      console.log('Resposta da API:', response);
+      const newToDos = [...toDos, toDo];
+      setToDos(newToDos);
+      setNewToDo('');
+      setNewDescription('');
+    } catch (error) {
+      console.error('Erro na requisição para a API:', error);
+    }
   };
   
   
-  const deleteTodo = (id: number) => {
+  
+  const deleteTodo = async (id: number) => {
     const existingToDos = JSON.parse(localStorage.getItem('someKey') || '[]');
 
     const updatedToDos = existingToDos.filter((toDo: ToDoProps) => toDo.id !== id);
-
-    localStorage.setItem('someKey', JSON.stringify(updatedToDos));
-
     setToDos(updatedToDos);
-
-    setToDos((prevToDos) => prevToDos.filter((toDo) => toDo.id !== id));
-    setCounter((prevCounter) => prevCounter + 1);
+  
+    try {
+      console.log('xxxx ', id);
+      await axios.delete(`http://localhost:3000/deletetask/${id}`);
+      setCounter((prevCounter) => prevCounter + 1);
+    } catch (error) {
+      console.error('Erro ao deletar a tarefa:', error);
+    }
   };
   return (
     <S.Container>
