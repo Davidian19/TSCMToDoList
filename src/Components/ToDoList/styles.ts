@@ -16,9 +16,6 @@ export const Container = styled.div`
         }
     }
     .ContainerList{
-        justify-content: center;
-        align-content: center;
-        align-items: center;
         ul{
             padding-inline-start: 0;
             margin-block-end: 0;

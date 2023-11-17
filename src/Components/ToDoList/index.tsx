@@ -17,15 +17,13 @@ function ToDoList() {
   const [counter, setCounter] = useState<number>(0);
   
   useEffect(() => {
-    if (newToDo) {
-      fetchToDo();
-    }
+    fetchToDo();
   }, []);
+  
   const fetchToDo = async () => {
     try {
       const response = await axios.get('http://localhost:3000/gettask');
-      const {todoItem} = response.data.toDoList;
-      setToDos(todoItem);
+      setToDos(response.data.toDoList);
     } catch (error) {
       console.error('Erro ao obter a lista de tarefas:', error);
     }
@@ -56,15 +54,12 @@ function ToDoList() {
   
   
   const deleteTodo = async (id: number) => {
-    const existingToDos = JSON.parse(localStorage.getItem('someKey') || '[]');
 
-    const updatedToDos = existingToDos.filter((toDo: ToDoProps) => toDo.id !== id);
-    setToDos(updatedToDos);
-  
     try {
       console.log('xxxx ', id);
       await axios.delete(`http://localhost:3000/deletetask/${id}`);
       setCounter((prevCounter) => prevCounter + 1);
+      fetchToDo();
     } catch (error) {
       console.error('Erro ao deletar a tarefa:', error);
     }
