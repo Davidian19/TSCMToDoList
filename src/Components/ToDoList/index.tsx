@@ -28,6 +28,7 @@ function ToDoList() {
       console.error('Erro ao obter a lista de tarefas:', error);
     }
   };
+  
   const addToDo = async () => {
     if (newToDo.trim() === '') return;
     const currentDate = new Date();
@@ -51,10 +52,7 @@ function ToDoList() {
     }
   };
   
-  
-  
   const deleteTodo = async (id: number) => {
-
     try {
       console.log('xxxx ', id);
       await axios.delete(`http://localhost:3000/deletetask/${id}`);
@@ -64,6 +62,7 @@ function ToDoList() {
       console.error('Erro ao deletar a tarefa:', error);
     }
   };
+
   return (
     <S.Container>
       <section className='toDoList'>
