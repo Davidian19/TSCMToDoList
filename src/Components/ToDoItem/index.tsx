@@ -5,15 +5,17 @@ function ToDo(props: any) {
   return (
     <S.Container>
 
-      <S.LeftInfo>
-        <S.LeftTitle>{title}</S.LeftTitle>
-        <S.LeftDescription>{description}</S.LeftDescription>
-      </S.LeftInfo>
+      <S.InfoContainer>
+        <S.TitleTask>{title}</S.TitleTask>
+        <S.InfoTask>
+          <S.Description>{description}</S.Description>
+          <span className='date'>{dateTime}</span>
+        </S.InfoTask>
+      </S.InfoContainer>
 
-      <S.RightInfo>
+      <S.ButtonContainer>
         <S.CloseButton onClick={onClickButton}>X</S.CloseButton>
-        <span>{dateTime}</span>
-      </S.RightInfo>
+      </S.ButtonContainer>
 
     </S.Container>
   )
