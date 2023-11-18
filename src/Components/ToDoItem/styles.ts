@@ -4,15 +4,17 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between; 
     align-items: center;
+    position: relative;
     background-color: #474747;
     width: 660px;
     border-radius: 15px;
     align-items: center;
     height: 90px;
     @media screen and (max-width: 761px){
-        width: 330px;
+        width: 300px;
         height: 90px;
         flex-direction: column;
+        margin-left: 10px;
     }
 `;
 
@@ -30,18 +32,26 @@ export const TitleTask = styled.h4`
     font-size: 16px;
     font-weight: 600;
     margin-top: 16px;
+    margin-bottom: 0px;
     @media screen and (max-width: 761px){
         text-align: left;
         margin-top: 16px;
+        margin-bottom: 20px;
     }
 `;
 export const Description = styled.span`
     font-weight: 300;
-    font-size: 13px;
+    font-size: 16px;
     opacity: 80%;
     @media screen and (max-width: 761px){
+        max-width: 150px;
         flex-direction: column;
         text-align: left;
+        font-size: 12px;
+        white-space: nowrap;         
+        overflow: hidden;           
+        text-overflow: ellipsis;    
+        max-width: 200px;
     }
 `;
 export const InfoTask = styled.span`
@@ -55,9 +65,11 @@ export const InfoTask = styled.span`
         margin-top: -21px;
     }
     .date{
-        position: fixed;
+        position: absolute;
         z-index: 0;
-        left: 45%;
+        left: 65%;
+        top: auto;
+        bottom: auto;
         font-weight: 300;
         font-size: 13px;
         opacity: 80%;
@@ -81,7 +93,7 @@ export const ButtonContainer = styled.div`
     button{
         @media screen and (max-width: 761px){
             margin-top: -150px;
-            margin-left: 310px;
+            margin-left: 290px;
         }
     }
 `;

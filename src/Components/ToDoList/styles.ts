@@ -4,11 +4,13 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row;
     margin-top: 30px;
+    align-items: center;
     .toDoList{
         background-color: #3D3D3D;
         border-radius: 15px;
         width: 700px;
         overflow-y: auto;
+        overflow-x: hidden;
         height: 640px;
         padding-left: 30px;
         @media screen and (max-width: 761px){
