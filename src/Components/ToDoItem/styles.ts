@@ -45,21 +45,27 @@ export const Description = styled.span`
     }
 `;
 export const InfoTask = styled.span`
-    display: flex;
-    
+    display: inline;
+    justify-content: space-between;
+    width: 100%;
     @media screen and (max-width: 761px){
+        display: flex;
         flex-direction: column;
         text-align: left;
         margin-top: -21px;
     }
     .date{
+        position: fixed;
+        z-index: 0;
+        left: 45%;
         font-weight: 300;
         font-size: 13px;
         opacity: 80%;
         width: 200px;
         padding-bottom: 16px;
-        margin-left: 200px;
         @media screen and (max-width: 761px){
+            position: static;
+            left: 0;
             margin-left: 0px;
         }
     }
