@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # TSCMToDoList
 
 TSCMToDoList é uma aplicação responsiva de ToDo List onde é possível adicionar e finalizar as tarefas, que possui um contador das atividades finalizadas que é armazenado numa api criada em javaScript.  Além disso possui um consumo da Chuck Norris Jokes Api, que atualiza a cada 5 segundos.
@@ -64,4 +64,3 @@ API simples em Node.js utilizando o framework Express para o armazenamento de ta
 - `/gettask` (GET): Retorna a lista de tarefas atualizada
 - `/addtask` (POST): Adiciona uma nova tarefa à lista
 - `/deletetask/:id` (DELETE): Exclui a tarefa com o ID especificado
-
