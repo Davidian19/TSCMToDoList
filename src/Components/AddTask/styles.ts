@@ -27,6 +27,7 @@ export const Container = styled.section`
             border: none;
             padding-left: 8px;
             margin-top: 8px;
+            color: white;
         }
 
         button{

@@ -1,12 +1,24 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { SectionTitle } from '../SectionTitle';
+import { useForm } from "react-hook-form"
 import * as S from './styles'
+
+type Inputs = {
+    newToDo: string;
+    newDescription: string;
+  };
+
 function AddTask(props: any) {  
-const { newToDo, setNewToDo, newDescription, setNewDescription, addToDo} = props;
+    const { newToDo, setNewToDo, newDescription, setNewDescription, addToDo} = props;
+    const {
+        handleSubmit,
+        formState: { errors },
+      } = useForm<Inputs>();
     return (
         <S.Container>
             <SectionTitle>Add new to do</SectionTitle>
-            <div className="form">
+            <form className="form" onSubmit={handleSubmit(addToDo)}>
                 <label>Task Name :</label>
                 <input
                 type="text"
@@ -23,8 +35,8 @@ const { newToDo, setNewToDo, newDescription, setNewDescription, addToDo} = props
                 onChange={(e) => setNewDescription(e.target.value)}
                 placeholder='Insira a descrição da nova tarefa...'
                 />
-                <button onClick={addToDo}>Create Todo</button>
-            </div>
+                <button type="submit">Create Todo</button>
+            </form>
         </S.Container>
     )
 }
